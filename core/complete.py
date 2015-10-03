@@ -1,9 +1,12 @@
-##
-## complete.py - auto complete with readline
-##
-## Credit to (http://stackoverflow.com/a/187660)
-##
-##
+#
+# complete.py - auto complete with readline
+#
+# Credit to (http://stackoverflow.com/a/187660)
+#
+# This file if part of weeman project
+#
+# See 'LICENSE' file for copying 
+#
 
 import readline
 

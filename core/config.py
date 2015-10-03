@@ -1,8 +1,11 @@
-##
-## config.py - config variables
-## 
-## Written by @Hypsurus
-##
+#
+# config.py - config variables
+#
+# This file if part of weeman project
+#
+# See 'LICENSE' file for copying 
+#
+
 
 import os
 import sys

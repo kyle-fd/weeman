@@ -1,6 +1,11 @@
-##
-## misc.py - usefull functions
-##
+#
+# misc.py - usefull functions
+#
+# This file if part of weeman project
+#
+# See 'LICENSE' file for copying 
+#
+
 
 import sys
 import time

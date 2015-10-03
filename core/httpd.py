@@ -1,8 +1,11 @@
-##
-## httpd.py - the main httpd server
-##
-## Written by @Hypsurus
-##
+#
+# httpd.py - the main httpd server
+#
+# This file if part of weeman project
+#
+# See 'LICENSE' file for copying 
+#
+
 
 import SimpleHTTPServer
 import SocketServer

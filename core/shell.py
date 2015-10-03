@@ -1,8 +1,12 @@
-##
-## shell.py - the weeman main shell
-##
-## Written by @Hypsurus 
-##
+#
+# shell.py - the weeman main shell
+#
+# This file if part of weeman project
+#
+# See 'LICENSE' file for copying 
+#
+
+
 
 
 import sys
