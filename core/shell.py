@@ -22,6 +22,7 @@ from core.config import url
 from core.config import action_url
 from core.config import port
 from core.config import user_agent
+from core.config import html_file
 from core.httpd import weeman
 
 def print_startup():
@@ -39,6 +40,7 @@ def shell():
     global port
     global action_url
     global user_agent
+    global html_file
 
     print_startup()
     complete(array)
@@ -75,6 +77,7 @@ def shell():
                 print("\tport       : %d " %(port))
                 print("\taction_url : %s " %(action_url))
                 print("\tuser_agent : %s " %(user_agent))
+                print("\thtml_file  : %s " %(html_file))
                 sys.stdout.write("\t\033[00m")
                 print("-" * l)
             elif prompt[0] == "set":
@@ -97,6 +100,8 @@ def shell():
                         u+=" "+x
                     user_agent = str(u.replace("user_agent", ""))
                     history.write("user_agent = %s\n" %user_agent)
+                if prompt[1] == "html_file":
+                    html_file = str(prompt[2])
             elif prompt[0] == "run" or prompt[0] == "r":
                 s = weeman(url,port)
                 s.clone()

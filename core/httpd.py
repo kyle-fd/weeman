@@ -75,8 +75,13 @@ class weeman(object):
 
     def clone(self):
         printt(3, "Trying to get %s  ..." %self.url)
-        printt(3, "Downloadng wepage ...")
-        data = self.request(self.url)
+        from core.shell import html_file
+        if not html_file:
+            printt(3, "Downloadng webpage ...")
+            data = self.request(self.url)
+        else:
+            printt(3, "Loading \'%s\' ..." %html_file)
+            data = open(html_file, "r").read()
         data = bs(data, "html.parser")    
         printt(3, "Modifying the HTML file ...")
 

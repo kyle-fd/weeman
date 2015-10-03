@@ -14,7 +14,8 @@ import time
 help_options = {"url" : "The URL of the webpage, with https:// or http://.",
                 "action_url" : "The form action URL of the webpage.",
                 "port" : "The port weeman will listen",
-                "user_agent" : "Weeman User-Agent string."}
+                "user_agent" : "Weeman User-Agent string.",
+                "html_file" : "allows you to load html file instead of URL."}
 
 def printt(s, msg):
     if s == 1:

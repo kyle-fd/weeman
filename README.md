@@ -11,6 +11,7 @@ News
 ====
 
 * Added new command: help <option>
+* Added "html_file" option, allows you to load html file instead of URL. 
 
 About
 =====
