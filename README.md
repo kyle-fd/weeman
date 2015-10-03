@@ -7,6 +7,11 @@ DISCLAIMER
 Usage of Weeman for attacking targets without prior mutual consent is illegal.
 Weeman developer not responsible to any damage caused by Weeman.
 
+News
+====
+
+* Added new command: help <option>
+
 About
 =====
 

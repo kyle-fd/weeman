@@ -17,6 +17,7 @@ from core.config import __version__
 from core.config import __codename__
 from core.misc import printt
 from core.misc import print_help
+from core.misc import print_help_option
 from core.config import url
 from core.config import action_url
 from core.config import port
@@ -62,7 +63,10 @@ def shell():
                 printt(2,"bye bye!")
                 break;
             elif prompt[0] == "help" or prompt[0] == "?":
-                print_help()
+                if prompt[1]:
+                    print_help_option(str(prompt[1]))
+                else:
+                    print_help()
             elif prompt[0] == "show":
                 l = 11 + len(url)
                 sys.stdout.write("\033[01;32m\t")
@@ -106,5 +110,10 @@ def shell():
             s = weeman(url,port)
             s.cleanup()
             print("\nInterrupt ...")
+        except IndexError:
+            if prompt[0] == "help" or prompt[0] == "?":
+                print_help()
+            else:
+                printt(3, "Error: please provide value for \'%s\'." %prompt[0])
         except Exception as e:
-            printt(3, "Error: Weeman recived error! (%s)" %(str(e)))
+            printt(3, "Error: (%s)" %(str(e)))

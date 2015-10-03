@@ -1,0 +1,15 @@
+* Version 1.0 <10-09-2015>:
+        Initial release.
+
+* Version 1.1 (Wein) <12-09-2015>:
+		Added redirect to orignal site.
+		Bug fixes
+
+* Version 1.2.2 (Popi) <16-09-2015>:
+		Screenshot updated.
+		Files moved from one script to core/.
+		Bug fixes
+		ASCII logo replaced.
+
+Version 1.3 (ArmWork) <1-09-2015>:
+		Added restore from session.
