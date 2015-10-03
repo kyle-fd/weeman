@@ -36,6 +36,8 @@ Install BeautifulSoup
 
 * Archlinux        - sudo pacman -S python2-beautifulsoup4
 * Ubuntu/Linuxmint - sudo apt-get install python-bs4
+* Fedora < 22	   - sudo yum install python-beautifulsoup4
+* Fedora >= 22	   - sudo dnf install python-beautifulsoup4
 * For another OS:  - sudo pip install beautifulsoup4
 
 Platforms
@@ -58,10 +60,10 @@ Run server:
 * For port 80 you need to run Weeman as root!
 
 * Host to clone (Ex: www.social-networks.local)
-> set url http://localhost
+> set url http://www.social-networks.local
 
 * "<code><"form action = "TAKE THIS URL">"</code>(View the site source and take the URL)
-> set action_url http://localhost/sendlogin 
+> set action_url http://www.social-networks.local/sendlogin 
 
 * The port Weeman server will listen
 > set port 2020
