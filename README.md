@@ -1,8 +1,6 @@
 Weeman - http server for phishing
 =================================
 
-![Weeman](https://raw.githubusercontent.com/Hypsurus/weeman/master/core/weeman12.png)
-
 DISCLAIMER
 ==========
 
@@ -15,6 +13,9 @@ About
 HTTP server for phishing in python.
 
 Usually you will want to run Weeman with DNS spoof attack. (see dsniff, ettercap).
+
+
+![Weeman](https://raw.githubusercontent.com/Hypsurus/weeman/master/core/weeman12.png)
 
 Weeman will do the following steps:
 ------------------------------------
@@ -41,10 +42,10 @@ Platforms
 -----------
 
 * Linux (any)
-* Mac (Not tested)
+* Mac (Tested)
 * Windows (Not tested)
 
-[!] If weeman runs on your platform (Mac/Windows), please let me know.
+[!] If weeman runs on your platform (Windows), (or not), please let me know.
 
 Usage
 ======

@@ -25,7 +25,7 @@ def tests_platform():
     if "linux" in sys.platform:
         printt(3, "Running Weeman on linux ... (All good)")
     elif "darwin" in sys.platform:
-        printt(3, "Running Weeman on \'Mac\' (Not tested)")
+        printt(3, "Running Weeman on \'Mac\' (All good)")
     elif "win" in sys.platform:
         printt(3, "Running Weeman on \'Windows\' (Not tested)")
     else:
