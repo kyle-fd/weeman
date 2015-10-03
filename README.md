@@ -13,9 +13,8 @@ About
 =====
 
 HTTP server for phishing in python.
-Weeman has support for most of the (bigest) websites.
 
-Usually you will want run Weeman with DNS spoof attack. (see dsniff, ettercap).
+Usually you will want to run Weeman with DNS spoof attack. (see dsniff, ettercap).
 
 Weeman will do the following steps:
 ------------------------------------
