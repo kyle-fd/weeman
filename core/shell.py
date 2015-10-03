@@ -72,6 +72,9 @@ def shell():
             elif prompt[0] == "set":
                 if prompt[1] == "port":
                     port = int(prompt[2])
+                    ## Check if port == 80 and not running as root
+                    if port == 80 and os.getuid() != 0:
+                        printt(2, "Permission denied, to bind port 80, you need to run weeman as root.");
                     history.write("port = %s\n" %port)
                 if prompt[1] == "url":
                     url = str(prompt[2])
