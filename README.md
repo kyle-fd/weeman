@@ -12,6 +12,7 @@ News
 
 * Added new command: help <option>
 * Added "html_file" option, allows you to load html file instead of URL. 
+* Trying to fix bug #4, replacing files/images/scripts with full locations.
 
 About
 =====

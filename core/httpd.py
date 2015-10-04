@@ -6,7 +6,6 @@
 # See 'LICENSE' file for copying 
 #
 
-
 import SimpleHTTPServer
 import SocketServer
 import urllib2
@@ -70,7 +69,14 @@ class weeman(object):
     def request(self,url):
             from core.shell import user_agent
             opener = urllib2.build_opener()
-            opener.addheaders = [('User-Agent', user_agent)]
+            opener.addheaders = [('User-Agent', user_agent),
+                    ("Accept", "text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/webp, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1"),
+                    #("Accept-Language","en-US,en;q=0.9,en;q=0.8"),
+                    #("Accept-Encoding", "gzip;q=0,deflate,sdch"),
+                    #("Accept-Charset", "ISO-8859-2,utf-8;q=0.7,*;q=0.7"),
+                    ("Keep-Alive", "115"),
+                    ("Connection", "keep-alive"),
+                    ("DNT", "1")]
             return opener.open(self.url).read()
 
     def clone(self):
@@ -88,6 +94,64 @@ class weeman(object):
         for tag in data.find_all("form"):
             tag['method'] = "post"
             tag['action'] = "ref.html"
+
+        # Here we will attampt to load CSS/JS from the page
+        # and replace ./ ../ / with the site URL.
+        
+        # Case the URL have more then one file
+        try:
+            uri = self.url.rsplit('/', 1)[0]
+            urisp = uri.split("/")[2] 
+        
+            # <link
+            for tag in data.find_all("link"):
+                link = tag['href']
+                if link.startswith("//"):
+                    pass
+                elif "://" in link:
+                    pass
+                elif "../" in link:
+                    link = link.replace("../", "%s/" %uri)
+                    tag['href'] = link
+                elif link.startswith("/") and not urisp in link:
+                    tag['href'] = "%s%s" %(uri, link);
+                elif not link.startswith("/") and not urisp  in link:
+                    tag['herf'] = "%s/%s" %(uri, link);
+            # <img
+            for tag in data.find_all("img"):
+                link = tag['src']
+                if link.startswith("//"):
+                    pass
+                elif "://" in link:
+                    pass
+                elif "../" in link:
+                    link = link.replace("../", "%s/" %uri)
+                    tag['src'] = link
+                elif link.startswith("/") and not urisp  in link:
+                    tag['src'] = "%s%s" %(uri, link);
+                elif not link.startswith("/") and not urisp in link:
+                    tag['src'] = "%s/%s" %(uri, link);
+            # <a 
+            for tag in data.find_all("a"):
+                link = tag['href']
+                if link.startswith("//"):
+                    pass
+                elif "://" in link:
+                    pass
+                elif "../" in link:
+                    link = link.replace("../", "%s/" %uri)
+                    tag['href'] = link
+                elif link.startswith("/") and not urisp  in link:
+                    tag['href'] = "%s%s" %(uri, link);
+                elif not link.startswith("/") and not urisp in link:
+                    tag['href'] = "%s/%s" %(uri, link);
+
+        except IndexError:
+            uri = self.url
+            urisp = uri.replace("http://", "").replace("https://", "") 
+        except Exception as e:
+            printt(3, "Something happen: (%s) igonring ..." %str(e))
+
         with open("index.html", "w") as index:
             index.write(data.prettify().encode('utf-8'))
             index.close()
@@ -99,8 +163,7 @@ class weeman(object):
     
     def cleanup(self):
         printt(3, "\n:: Running cleanup ...")
-        ## In case weeman will not create ref.html,
-        ## Remove each file in diffrent check.
+        # In case weeman will not create ref.html, remove each file.
         if os.path.exists("index.html"):
             os.remove("index.html")
         if os.path.exists("ref.html"):

@@ -6,9 +6,6 @@
 # See 'LICENSE' file for copying 
 #
 
-
-
-
 import sys
 import os
 from core.complete import complete
