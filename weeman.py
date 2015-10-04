@@ -21,11 +21,6 @@
 import sys
 from core.misc import printt
 
-try:
-    from bs4 import BeautifulSoup as bs
-except ImportError:
-    printt(1, "Please install beautifulsoup 4 to continue ...")
-
 def tests_pyver():
     if sys.version[:3] == "2.7" or "2" in sys.version[:3]:
         pass # All good
@@ -47,6 +42,10 @@ def tests_platform():
 def main():
     tests_pyver()
     tests_platform()
+    try:
+        from bs4 import BeautifulSoup as bs
+    except ImportError:
+        printt(1, "Please install beautifulsoup 4 to continue ...")
     from core.shell import shell
     shell()
 
