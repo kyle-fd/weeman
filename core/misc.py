@@ -15,7 +15,13 @@ help_options = {"url" : "The URL of the webpage, with https:// or http://.",
                 "action_url" : "The form action URL of the webpage.",
                 "port" : "The port weeman will listen",
                 "user_agent" : "Weeman User-Agent string.",
-                "html_file" : "allows you to load html file instead of URL."}
+                "html_file" : "allows you to load html file instead of URL.",
+                "set" : "Set value for option, set <option> <value>.",
+                "run" : "Run the server, alias = \'r\'.",
+                "clear" : "clear the screen.",
+                "help" : "We all know (:",
+                "quit" : "quit, alias = \'q\'."}
+
 
 def printt(s, msg):
     if s == 1:
@@ -30,11 +36,11 @@ def printt(s, msg):
 
 def print_help():
     print("\t\033[01;32mshow   : show default settings.")
-    print("\tset    : set settings (set port 80).")
+    print("\tset    : set value for option (set <option> <value>).")
     print("\trun    : start the server.")
     print("\tclear  : clear screen.")
-    print("\thelp   : show help.")
-    print("\tquit   : bye bye.\033[00m")
+    print("\thelp   : show help or (help <option>.)")
+    print("\tquit   : quit.\033[00m")
 
 def print_help_option(option):
     found = 0
