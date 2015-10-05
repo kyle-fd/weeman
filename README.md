@@ -13,7 +13,7 @@ About
 HTTP server for phishing in python.
 Usually you will want to run Weeman with DNS spoof attack. (see dsniff, ettercap).
 
-![Weeman](https://raw.githubusercontent.com/Hypsurus/weeman/master/core/weeman12.png)
+![Weeman](https://raw.githubusercontent.com/Hypsurus/weeman/master/core/weeman_curr.png)
 
 Weeman will do the following steps:
 ------------------------------------
