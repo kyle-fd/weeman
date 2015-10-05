@@ -7,20 +7,11 @@ DISCLAIMER
 Usage of Weeman for attacking targets without prior mutual consent is illegal.
 Weeman developer not responsible to any damage caused by Weeman.
 
-News
-====
-
-* Added new command: help <option>
-* Added "html_file" option, allows you to load html file instead of URL. 
-* Trying to fix bug #4, replacing files/images/scripts with full locations.
-
 About
 =====
 
 HTTP server for phishing in python.
-
 Usually you will want to run Weeman with DNS spoof attack. (see dsniff, ettercap).
-
 
 ![Weeman](https://raw.githubusercontent.com/Hypsurus/weeman/master/core/weeman12.png)
 
@@ -54,12 +45,15 @@ Platforms
 * Mac (Tested)
 * Windows (Not tested)
 
-[!] If weeman runs on your platform (Windows), (or not), please let me know.
+[!] If weeman runs on your platform (Windows) (or not), please let me know.
 
 Usage
 ======
 
-Just type `help`
+run weeman in quiet mode:
+> ./weeman.py -q
+
+* commands:
 
 Run server:
 -----------
@@ -69,7 +63,8 @@ Run server:
 * Host to clone (Ex: www.social-networks.local)
 > set url http://www.social-networks.local
 
-* "<code><"form action = "TAKE THIS URL">"</code>(View the site source and take the URL)
+* View the site source and take the URL, example:
+> `<code><form action = "TAKE THIS URL"></code>`
 > set action_url http://www.social-networks.local/sendlogin 
 
 * The port Weeman server will listen
@@ -84,6 +79,9 @@ Get Weeman
 =============
                 git clone git://github.com/Hypsurus/weeman
   
-Copyright 2015 (C) Hypsurus <hypsurus@mail.ru>.
+Copying
+========
 
+Copyright 2015 (C) Hypsurus <hypsurus@mail.ru>.
+<p>
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.

@@ -20,26 +20,29 @@ from core.config import action_url
 from core.config import port
 from core.config import user_agent
 from core.config import html_file
+from core.config import quiet_mode
+from core.config import say
 from core.httpd import weeman
 
 def print_startup():
     #print("\033[H\033[J") # Clear the screen
     print("\033[01;31m")
-    print(open("core/logo.txt", "r").read())
+    print(open("core/logo.txt", "r").read()[:-1])
     print("\033[00m")
-    print("\033[01;33m\t    ..:: Weeman %s (%s) ::..\033[00m" %(__version__, __codename__)) 
+    print("\033[01;33m\t    ::: weeman %s (%s) ::::\033[00m" %(__version__, __codename__)) 
     print("\033[01;34m\t-------------------------------------\033[00m")
-    print("\t\'There are plenty of fish in the sea\'")
+    print("\t\'%s\'" %say)
     print("\033[01;34m\t-------------------------------------\n\033[00m")
  
-def shell():
+def shell(quiet_mode):
     global url
     global port
     global action_url
     global user_agent
     global html_file
 
-    print_startup()
+    if not quiet_mode:
+        print_startup()
     complete(array)
 
     if os.path.exists("history.log"):

@@ -14,6 +14,8 @@ __author__ = "Hypsurus <hypsurus@mail.ru>"
 __version__ = "1.3"
 __codename__ = "ArmWork"
 
+say = "There are plenty of fish in the sea"
+
 def history_getkey(key):
     try:
         history = open("history.log", "r").readlines()
@@ -34,4 +36,4 @@ port = int(history_getkey("port")) or int(8080)
 action_url = history_getkey("action_url") or "http://localhost/login"
 user_agent = history_getkey("user_agent") or "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36"
 html_file = None
-
+quiet_mode = False

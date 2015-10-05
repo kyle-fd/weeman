@@ -19,7 +19,9 @@
 #
 
 import sys
+import optparse
 from core.misc import printt
+from core.config import quiet_mode
 
 def tests_pyver():
     if sys.version[:3] == "2.7" or "2" in sys.version[:3]:
@@ -31,9 +33,11 @@ def tests_pyver():
 
 def tests_platform():
     if "linux" in sys.platform:
-        printt(3, "Running Weeman on linux ... (All good)")
+        #printt(3, "Running Weeman on linux ... (All good)")
+        pass
     elif "darwin" in sys.platform:
-        printt(3, "Running Weeman on \'Mac\' (All good)")
+        #printt(3, "Running Weeman on \'Mac\' (All good)")
+        pass
     elif "win" in sys.platform:
         printt(3, "Running Weeman on \'Windows\' (Not tested)")
     else:
@@ -46,8 +50,17 @@ def main():
         from bs4 import BeautifulSoup as bs
     except ImportError:
         printt(1, "Please install beautifulsoup 4 to continue ...")
+
+    parser = optparse.OptionParser()
+    parser.add_option("-q", "--quiet", 
+            dest="quiet_mode_opt", action="store_true", 
+            default=False, help="Runs without displaying the banner.")
+
+    options,r = parser.parse_args()
+    mode = options.quiet_mode_opt
+
     from core.shell import shell
-    shell()
+    shell(mode)
 
 if __name__ == '__main__':
     main()
