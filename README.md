@@ -53,8 +53,6 @@ Usage
 run weeman in quiet mode:
 > ./weeman.py -q
 
-* commands:
-
 Run server:
 -----------
 
@@ -63,8 +61,7 @@ Run server:
 * Host to clone (Ex: www.social-networks.local)
 > set url http://www.social-networks.local
 
-* View the site source and take the URL, example:
-> `<code><form action = "TAKE THIS URL"></code>`
+* Set form action URL (Example: `<code><form action = "TAKE THIS URL"></code>`)
 > set action_url http://www.social-networks.local/sendlogin 
 
 * The port Weeman server will listen
