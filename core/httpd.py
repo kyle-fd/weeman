@@ -30,7 +30,7 @@ class handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                      'CONTENT_TYPE':self.headers['Content-Type'],})
         try:
             from core.shell import url
-            logger = open("%s.log" %url.replace("https://", "").replace("http://", "").split("/")[0], "w+")
+            logger = open("%s.log" %url.replace("https://", "").replace("http://", "").split("/")[0], "a")
             logger.write("## Data for %s\n\n" %url)
             for tag in form.list:
                 tmp = str(tag).split("(")[1]
