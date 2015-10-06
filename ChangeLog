@@ -23,3 +23,7 @@ Version 1.4 (Ping) <05-10-2015>:
 		Using optparse
 		Replacing files/images/scripts with full locations.
 		Headers files updated.
+
+Version 1.5 (NONE) <DATE>:
+		url, action_url http://localhost changed to None.
+		
