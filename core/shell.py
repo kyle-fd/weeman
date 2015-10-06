@@ -105,9 +105,9 @@ def shell(quiet_mode):
                     html_file = str(prompt[2])
             elif prompt[0] == "run" or prompt[0] == "r":
                 if not url:
-                    printt(3, "\'url\' Can't be \'None\', please use \'set\'.")
+                    printt(3, "Error: \'url\' Can't be \'None\', please use \'set\'.")
                 elif not action_url:
-                    printt(3, "\'action_url\' Can't be \'None\', please use \'set\'.")
+                    printt(3, "Error: \'action_url\' Can't be \'None\', please use \'set\'.")
                 else:
                     # Here we start the server (:
                     s = weeman(url,port)
