@@ -31,7 +31,7 @@ class handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         try:
             from core.shell import url
             logger = open("%s.log" %url.replace("https://", "").replace("http://", "").split("/")[0], "a")
-            logger.write("## Data for %s\n\n" %url)
+            logger.write("\n## Data for %s\n\n" %url)
             for tag in form.list:
                 tmp = str(tag).split("(")[1]
                 key,value = tmp.replace(")", "").replace("\'", "").replace(",", "").split()
@@ -80,9 +80,9 @@ class weeman(object):
             return opener.open(self.url).read()
 
     def clone(self):
-        printt(3, "Trying to get %s  ..." %self.url)
         from core.shell import html_file
         if not html_file:
+            printt(3, "Trying to get %s  ..." %self.url)
             printt(3, "Downloadng webpage ...")
             data = self.request(self.url)
         else:
