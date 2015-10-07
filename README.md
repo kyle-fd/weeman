@@ -37,7 +37,7 @@ Weeman will do the following steps:
 Requirements
 ============
 
-* Python <= 2.7 .
+* Python <= 2.7 (or [Python-3 branch](https://github.com/Hypsurus/weeman/tree/python-3))
 * Python BeautifulSoup 4
 
 Install BeautifulSoup
