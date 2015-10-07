@@ -37,7 +37,7 @@ Weeman will do the following steps:
 Requirements
 ============
 
-* Python <= 2.7.
+* Python <= 2.7 .
 * Python BeautifulSoup 4
 
 Install BeautifulSoup
@@ -91,8 +91,9 @@ Contributions are very welcome!
 1. fork the repository
 2. clone the repo (git clone git@github.com:USERNAME/weeman.git)
 3. make your changes
+6. Add yourself in contributors.txt
 4. push the repository
-5. Add yourself in contributors.txt
+5. make a pull request
 
 Thank you - and happy contributing!
 
