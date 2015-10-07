@@ -1,6 +1,16 @@
 Weeman - http server for phishing
 =================================
 
+TODO
+-----
+
+* Phishing modules. (modules/)
+* Support for more web sites.
+* Code cleanup.
+* Instructions for more platforms.
+* bash scripts for ettercap/dsniff (tools/)
+
+
 DISCLAIMER
 ==========
 
@@ -14,6 +24,7 @@ HTTP server for phishing in python.
 Usually you will want to run Weeman with DNS spoof attack. (see dsniff, ettercap).
 
 ![Weeman](https://raw.githubusercontent.com/Hypsurus/weeman/master/core/weeman_curr.png)
+
 
 Weeman will do the following steps:
 ------------------------------------
@@ -75,11 +86,15 @@ The settings will be saved for the next time you run weeman.py.
 Contributing
 =============
 
+Contributions are very welcome!
+
 1. fork the repository
 2. clone the repo (git clone git@github.com:USERNAME/weeman.git)
 3. make your changes
 4. push the repository
 5. Add yourself in contributors.txt
+
+Thank you - and happy contributing!
 
 Get Weeman
 =============
