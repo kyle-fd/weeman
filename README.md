@@ -72,6 +72,15 @@ Run server:
 
 The settings will be saved for the next time you run weeman.py.
 
+Contributing
+=============
+
+1. fork the repository
+2. clone the repo (git clone git@github.com:USERNAME/weeman.git)
+3. make your changes
+4. push the repository
+5. Add yourself in contributors.txt
+
 Get Weeman
 =============
                 git clone git://github.com/Hypsurus/weeman
@@ -79,6 +88,5 @@ Get Weeman
 Copying
 ========
 
-Copyright 2015 (C) Hypsurus <hypsurus@mail.ru>.
-<p>
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+> Copyright 2015 (C) Hypsurus <hypsurus@mail.ru>
+> License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
