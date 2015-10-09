@@ -157,7 +157,7 @@ class weeman(object):
             index.close()
         printt(3, "the HTML page will redirect to ref.html ...")
     def serve(self):
-        printt(3, "\033[01;35mStarting Weeman %s server on 0.0.0.0:%d\033[00m" %(__version__, self.port))
+        printt(3, "\033[01;35mStarting Weeman %s server on localhost:%d\033[00m" %(__version__, self.port))
         self.httpd = SocketServer.TCPServer(("", self.port),handler)
         self.httpd.serve_forever()
     

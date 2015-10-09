@@ -126,6 +126,6 @@ def shell(quiet_mode):
             if prompt[0] == "help" or prompt[0] == "?":
                 print_help()
             else:
-                printt(3, "Error: please provide value for \'%s\'." %prompt[0])
+                printt(3, "Error: please provide option for \'%s\'." %prompt[0])
         except Exception as e:
             printt(3, "Error: (%s)" %(str(e)))
