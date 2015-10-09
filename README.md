@@ -1,15 +1,5 @@
 Weeman - http server for phishing
-=================================
-
-TODO
------
-
-* Phishing modules. (modules/)
-* Support for more web sites.
-* Code cleanup.
-* Instructions for more platforms.
-* bash scripts for ettercap/dsniff (tools/)
-
+==================================
 
 DISCLAIMER
 ==========
@@ -33,6 +23,11 @@ Weeman will do the following steps:
 2. Wait for clients
 3. Grab the data (POST).
 4. Try to login the client to the original page :smiley:
+
+Tools
+======
+
+* tools/weeman_ettercap.sh - run ettercap with dns_spoof plugin.
 
 Requirements
 ============
