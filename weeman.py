@@ -46,11 +46,6 @@ def tests_platform():
 def main():
     tests_pyver()
     tests_platform()
-    try:
-        from bs4 import BeautifulSoup as bs
-    except ImportError:
-        printt(1, "Please install beautifulsoup 4 to continue ...")
-
     parser = optparse.OptionParser()
     parser.add_option("-q", "--quiet", 
             dest="quiet_mode_opt", action="store_true", 
