@@ -24,17 +24,27 @@ from core.config import quiet_mode
 from core.config import say
 from core.httpd import weeman
 
+# Prompt
+PROMPT_P = "\033[01;31m(\033[00m\033[01;33mweeman\033[00m \033[01;31m)\033[00m \033[01;32m: \033[00m"
+
 def print_startup():
-    #print("\033[H\033[J") # Clear the screen
+    """
+        Print the startup banner
+    """
+    print("\033[H\033[J") # Clear the screen
     print("\033[01;31m")
-    print(open("core/logo.txt", "r").read()[:-1])
-    print("\033[00m")
-    print("\033[01;33m\t    ::: weeman %s (%s) ::::\033[00m" %(__version__, __codename__)) 
-    print("\033[01;34m\t-------------------------------------\033[00m")
+    sys.stdout.write(open("core/logo.txt", "r").read()[:-1])
+    print("\033[00m") 
+    sys.stdout.write("\033[01;37m\t\t     (%s-%s)\n\033[00m" %(__version__,  __codename__))
+    print("\033[01;37m\t<><><><><><><><><><<><><><><><><><><>\033[00m")
     print("\t\'%s\'" %say)
-    print("\033[01;34m\t-------------------------------------\n\033[00m")
+    print("\033[01;37m\t<><><><><><><><><><<><><><><><><><><>\n\033[00m")
  
 def shell(quiet_mode):
+    """
+        The shell, parse command line args,
+        and set variables.
+    """
     global url
     global port
     global action_url
@@ -55,7 +65,7 @@ def shell(quiet_mode):
 
     while True:
         try:
-            an = raw_input(" (weeman ) : ")
+            an = raw_input(PROMPT_P)
             prompt = an.split()
             if not prompt:
                 print("Error: What? try help.")
@@ -71,7 +81,7 @@ def shell(quiet_mode):
                     print_help()
             elif prompt[0] == "show":
                 l = 20
-                sys.stdout.write("\033[01;32m\t")
+                sys.stdout.write("\033[01;37m\t")
                 print("-" * l)
                 print("\turl        : %s " %url)
                 print("\tport       : %d " %(port))
