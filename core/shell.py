@@ -25,7 +25,7 @@ from core.config import say
 from core.httpd import weeman
 
 # Prompt
-PROMPT_P = "\033[01;31m(\033[00m\033[01;33mweeman\033[00m \033[01;31m)\033[00m \033[01;32m: \033[00m"
+PROMPT_P = "( weeman ) : "
 
 def print_startup():
     """
