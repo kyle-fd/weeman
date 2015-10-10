@@ -7,6 +7,11 @@ DISCLAIMER
 Usage of Weeman for attacking targets without prior mutual consent is illegal.
 Weeman developer not responsible to any damage caused by Weeman.
 
+News
+=====
+
+* Beautifulsoup dependency removed.
+
 About
 =====
 
@@ -32,17 +37,7 @@ Tools
 Requirements
 ============
 
-* Python <= 2.7 (or [Python-3 branch](https://github.com/Hypsurus/weeman/tree/python-3))
-* Python BeautifulSoup 4
-
-Install BeautifulSoup
----------------------
-
-* Archlinux        - sudo pacman -S python2-beautifulsoup4
-* Ubuntu/Linuxmint - sudo apt-get install python-bs4
-* Fedora < 22	   - sudo yum install python-beautifulsoup4
-* Fedora >= 22	   - sudo dnf install python-beautifulsoup4
-* For another OS:  - sudo pip install beautifulsoup4
+* Python <= 2.7.
 
 Platforms
 -----------
@@ -92,12 +87,9 @@ Contributions are very welcome!
 
 Thank you - and happy contributing!
 
-Get Weeman
-=============
-                git clone git://github.com/Hypsurus/weeman
-  
 Copying
 ========
 
-> Copyright 2015 (C) Hypsurus <hypsurus@mail.ru>
-> License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+###### Copyright 2015 (C) Hypsurus <hypsurus@mail.ru>
+###### License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+###### [beautifulsoup 4 library](http://www.crummy.com/software/BeautifulSoup/bs4/) by Leonard Richardson under the MIT license.

