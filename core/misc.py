@@ -30,9 +30,9 @@ def printt(s, msg):
     elif s == 2:
         print("\033[01;32m[%s] %s\033[00m" %(time.strftime("%H:%M:%S"),msg))
     elif s == 3: 
-        print("\033[01;01m[%s] %s\033[00m" %(time.strftime("%H:%M:%S"),msg))
+        print("\033[01;37m[%s] %s\033[00m" %(time.strftime("%H:%M:%S"),msg))
     else:
-        print("\033[01;01m[%s] %s\033[00m" %(time.strftime("%H:%M:%S"),msg))
+        print("\033[01;37m[%s] %s\033[00m" %(time.strftime("%H:%M:%S"),msg))
 
 def print_help():
     print("\t\033[01;32mshow   : show default settings.")
