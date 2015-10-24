@@ -10,6 +10,7 @@ Weeman developer not responsible to any damage caused by Weeman.
 News
 =====
 
+* Added command line options.
 * Beautifulsoup dependency removed.
 
 About
@@ -57,12 +58,14 @@ run weeman in quiet mode:
 Run server:
 -----------
 
+* You can also run weeman from the command line (see --help).
+
 * For port 80 you need to run Weeman as root!
 
 * Host to clone (Ex: www.social-networks.local)
 > set url http://www.social-networks.local
 
-* Set form action URL (Example: `<code><form action = "TAKE THIS URL"></code>`)
+* Set form action URL (Example: ```<form action = "TAKE THIS URL">```)
 > set action_url http://www.social-networks.local/sendlogin 
 
 * The port Weeman server will listen

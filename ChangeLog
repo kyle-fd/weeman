@@ -27,4 +27,5 @@ Version 1.4 (Ping) <05-10-2015>:
 Version 1.5 (GreenTree) 10-10-2015:
 		url, action_url http://localhost changed to Nonei
 		Beautifulsoup dependency removed.
-		
+
+* Added command line options.
