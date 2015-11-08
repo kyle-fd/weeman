@@ -11,6 +11,7 @@ import SocketServer
 import urllib2
 import cgi
 import os
+import time
 from socket import error as socerr
 from core.config import __version__
 from core.config import __codename__
@@ -35,7 +36,7 @@ class handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         try:
             from core.shell import url
             logger = open("%s.log" %url.replace("https://", "").replace("http://", "").split("/")[0], "a")
-            logger.write("\n## Data for %s\n\n" %url)
+            logger.write("\n## %s - Data for %s\n\n" %(time.strftime("%H:%M:%S - %d/%m/%y"), url))
             for tag in form.list:
                 tmp = str(tag).split("(")[1]
                 key,value = tmp.replace(")", "").replace("\'", "").replace(",", "").split()
