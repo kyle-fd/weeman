@@ -49,6 +49,7 @@ def main():
     global port
     global user_agent
     global html_file
+    global external_js
     global start
 
     tests_pyver()
@@ -61,10 +62,11 @@ def main():
     parser.add_option("-p", "--port",       dest="port",       help="The port weeman server will listen.", default=8080)
     parser.add_option("-U", "--user-agent", dest="user_agent", help="User-Agent for the HTTP request.", default=usera)
     parser.add_option("-f", "--html-file",  dest="html_file",  help="HTML file to load, instead of URL.", default=None)
+    parser.add_option("-e", "--external-js",  dest="external_js",  help="External script to include on cloned site", default=None)
     parser.add_option("-s", "--start",      dest="start",      action="store_true", help="Start weeman server.")
 
     options,r = parser.parse_args()
-    
+
     if options.start:
         from core.shell import shell_noint
         shell_noint(options)
