@@ -35,12 +35,14 @@ def printt(s, msg):
         print("\033[01;37m[%s] %s\033[00m" %(time.strftime("%H:%M:%S"),msg))
 
 def print_help():
-    print("\t\033[01;32mshow   : show default settings.")
-    print("\tset    : set value for option (set <option> <value>).")
-    print("\trun    : start the server.")
-    print("\tclear  : clear screen.")
-    print("\thelp   : show help or (help <option>.)")
-    print("\tquit   : quit.\033[00m")
+    print("\t\033[01;32m")
+    print("\tshow        : show default settings.")
+    print("\tset         : set value for option (set <option> <value>).")
+    print("\trun         : start the server.")
+    print("\tclear       : clear screen.")
+    print("\thelp        : show help or (help <option>.)")
+    print("\tframework   : load the modules framework.")
+    print("\tquit        : quit.\033[00m")
 
 def print_help_option(option):
     found = 0

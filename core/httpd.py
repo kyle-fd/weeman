@@ -53,10 +53,10 @@ class handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             printt(3, "Something wrong: (%s) igonring ..." %str(e))
 
     def log_message(self, format, *args):
-        printt(3, "Connected : %s" %(self.address_string()))
+        printt(3, "><> Connected : %s" %(self.address_string()))
         arg = format%args
         if arg.split()[1] == "/":
-            printt(3, "%s - sent GET request without parameters." %self.address_string())
+            printt(3, "><> %s - sent GET request without parameters." %self.address_string())
         else:
             if arg.split()[1].startswith("/") and "&" in arg.split()[1]:
                 printt(3, "%s - sent GET request with parameters." %self.address_string())

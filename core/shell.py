@@ -11,6 +11,7 @@ import os
 from core.complete import complete
 from core.complete import array 
 from core.config import __version__
+from core.config import __framework_version__
 from core.config import __codename__
 from core.misc import printt
 from core.misc import print_help
@@ -23,9 +24,7 @@ from core.config import html_file
 from core.config import quiet_mode
 from core.config import say
 from core.httpd import weeman
-
-# Prompt
-PROMPT_P = "( weeman ) : "
+from core.framework import framework
 
 def print_startup():
     """
@@ -35,11 +34,7 @@ def print_startup():
     print("\033[01;31m")
     sys.stdout.write(open("core/logo.txt", "r").read()[:-1])
     print("\033[00m") 
-    sys.stdout.write("\033[01;37m\t\t     (%s-%s)\n\033[00m" %(__version__,  __codename__))
-    print("\033[01;37m\t<><><><><><><><><><<><><><><><><><><>\033[00m")
-    print("\t\'%s\'" %say)
-    print("\033[01;37m\t<><><><><><><><><><<><><><><><><><><>\n\033[00m")
-
+    sys.stdout.write("\033[01;33m\t  :[ %s-%s | Framework: %s]:\n\033[00m" %(__version__,  __codename__, __framework_version__))
 def shell_noint(options):
     global url
     global port
@@ -83,7 +78,6 @@ def shell():
     global html_file
 
     print_startup()
-    complete(array)
 
     if os.path.exists("history.log"):
         if  os.stat("history.log").st_size == 0:
@@ -95,7 +89,9 @@ def shell():
 
     while True:
         try:
-            an = raw_input(PROMPT_P)
+            # for Re-complete
+            complete(array)
+            an = raw_input("\033[01;37m>>> \033[00m") or "help"
             prompt = an.split()
             if not prompt:
                 print("Error: What? try help.")
@@ -145,9 +141,9 @@ def shell():
                     html_file = str(prompt[2])
             elif prompt[0] == "run" or prompt[0] == "r":
                 if not url:
-                    printt(3, "Error: \'url\' Can't be \'None\', please use \'set\'.")
+                    printt(3, "Error: \'url\' can't be \'None\', please use \'set\'.")
                 elif not action_url:
-                    printt(3, "Error: \'action_url\' Can't be \'None\', please use \'set\'.")
+                    printt(3, "Error: \'action_url\' can't be \'None\', please use \'set\'.")
                 else:
                     # Here we start the server (:
                     s = weeman(url,port)
@@ -155,6 +151,9 @@ def shell():
                     s.serve()
             elif prompt[0] == "banner" or prompt[0] == "b":
                 print_startup()
+            elif prompt[0] == "framework":
+                fw = framework()
+                fw.shell()
             else:
                 print("Error: \'%s\' What? try help." %prompt[0])
 
