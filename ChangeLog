@@ -25,7 +25,13 @@ Version 1.4 (Ping) <05-10-2015>:
 		Headers files updated.
 
 Version 1.5 (GreenTree) 10-10-2015:
-		url, action_url http://localhost changed to Nonei
+		url, action_url http://localhost changed to None
 		Beautifulsoup dependency removed.
 
-* Added command line options.
+Version 1.6 (Black-eagle) 22-11-2015:
+	 Added command line options.
+	 Added framework.py
+	 Added modules/is_website_up.pu module.
+	 Code cleanup.
+	 Windows not supported!
+
