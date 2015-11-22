@@ -14,7 +14,7 @@ array = ["set", "show",
          "help", "port", 
          "url", "action_url", 
          "user_agent", "html_file",
-         "clear", "quit", 
+         "clear", "quit", "framework",
          "run", "banner"]
 
 class auto(object):
