@@ -39,22 +39,15 @@ def tests_platform():
         #printt(3, "Running Weeman on \'Mac\' (All good)")
         pass
     elif "win" in sys.platform:
-        printt(3, "Running Weeman on \'Windows\' (Not tested)")
+        print("Sorry, there is no support for windows right now.")
+        sys.exit(1)
     else:
         printt(3, "If \'Weeman\' runs sucsessfuly on your platform %s\nPlease let me (@Hypsurus) know!" %sys.platform)
 
 def main():
-    global url
-    global action_url
-    global port
-    global user_agent
-    global html_file
-    global start
-
     tests_pyver()
     tests_platform()
     parser = optparse.OptionParser()
-
     parser.add_option("-q", "--quiet",      dest="quiet_mode_opt", action="store_true", default=False, help="Runs without displaying the banner.")
     parser.add_option("-u", "--url",        dest="url",        help="The webpage URL.", default=None)
     parser.add_option("-a", "--action-url", dest="action_url", help="The action_url for the data.", default=None)
@@ -62,9 +55,8 @@ def main():
     parser.add_option("-U", "--user-agent", dest="user_agent", help="User-Agent for the HTTP request.", default=usera)
     parser.add_option("-f", "--html-file",  dest="html_file",  help="HTML file to load, instead of URL.", default=None)
     parser.add_option("-s", "--start",      dest="start",      action="store_true", help="Start weeman server.")
-
     options,r = parser.parse_args()
-    
+
     if options.start:
         from core.shell import shell_noint
         shell_noint(options)
