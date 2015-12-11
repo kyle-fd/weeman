@@ -1,15 +1,10 @@
 Weeman - http server for phishing
 ==================================
 
-DISCLAIMER
-==========
-
-Usage of Weeman for attacking targets without prior mutual consent is illegal.
-Weeman developer not responsible to any damage caused by Weeman.
-
 News
 =====
 
+* Added profiles
 * Weeman framework 0.1 is out !!!
 * Added command line options.
 * Beautifulsoup dependency removed.
@@ -47,6 +42,13 @@ Tools
 
 * tools/weeman_ettercap.sh - run ettercap with dns_spoof plugin.
 
+Profiles
+=========
+
+You can load profiles in weeman, for example profile for mobile site and profile for desktop site.
+
+`./weeman.py -p mobile.localhost.profile`
+
 Requirements
 ============
 
@@ -58,32 +60,6 @@ Platforms
 * Linux (any)
 * Mac (Tested)
 * Windows (Not supported)
-
-Usage
-======
-
-run weeman in quiet mode:
-> ./weeman.py -q
-
-###### NOTE: You can also run weeman from the command line (see --help).
-
-Run server
-==========
-* For port 80 you need to run Weeman as root!
-
-* Host to clone (Ex: www.social-networks.local)
-> set url http://www.social-networks.local
-
-* Set form action URL (Example: ```<form action = "TAKE THIS URL">```)
-> set action_url http://www.social-networks.local/sendlogin 
-
-* The port Weeman server will listen
-> set port 2020
-
-* Start the server
-> run
-
-The settings will be saved for the next time you run weeman.py.
 
 Contributing
 =============
@@ -98,6 +74,12 @@ Contributions are very welcome!
 5. make a pull request
 
 Thank you - and happy contributing!
+
+DISCLAIMER
+==========
+
+Usage of Weeman for attacking targets without prior mutual consent is illegal.
+Weeman developer not responsible to any damage caused by Weeman.
 
 Copying
 ========
