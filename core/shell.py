@@ -35,18 +35,37 @@ def print_startup():
     sys.stdout.write(open("core/logo.txt", "r").read()[:-1])
     print("\033[00m") 
     sys.stdout.write("\033[01;33m\t  :[ %s-%s | Framework: %s]:\n\033[00m" %(__version__,  __codename__, __framework_version__))
-def shell_noint(options):
+
+def profile_getkey(profile_file, key):
+    try:
+        profile = open(profile_file, "r").readlines()
+    except Exception as e:
+        return 0
+    if profile == None:
+        return 0
+    for line in profile:
+        if line.startswith("\n") or line.startswith("#"):
+            pass
+
+        else:
+            (skey,value) = line.split(" = ")
+            if skey == key:
+                return str(value[:-1])
+
+    return 0
+
+def shell_noint(profile_file):
     global url
     global port
     global action_url
     global user_agent
     global html_file
 
-    url = options.url
-    action_url = options.action_url
-    port = int(options.port)
-    user_agent = options.user_agent
-    html_file = options.html_file
+    url = profile_getkey(profile_file, "url")
+    action_url = profile_getkey(profile_file, "action_url")
+    port = int(profile_getkey(profile_file, "port"))
+    user_agent = profile_getkey(profile_file, "user_agent")
+    html_file = profile_getkey(profile_file, "html_file")
 
     try:
         print_startup()
