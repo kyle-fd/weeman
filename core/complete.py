@@ -15,8 +15,8 @@ array = ["set", "show",
          "url", "action_url",
          "user_agent", "html_file",
          "external_js", "clear",
-         "quit", "run",
-         "banner"]
+         "quit", "framework",
+         "run", "banner"]
 
 class auto(object):
 

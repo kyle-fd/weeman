@@ -11,6 +11,7 @@ import os
 from core.complete import complete
 from core.complete import array
 from core.config import __version__
+from core.config import __framework_version__
 from core.config import __codename__
 from core.misc import printt
 from core.misc import print_help
@@ -24,9 +25,7 @@ from core.config import external_js
 from core.config import quiet_mode
 from core.config import say
 from core.httpd import weeman
-
-# Prompt
-PROMPT_P = "( weeman ) : "
+from core.framework import framework
 
 def print_startup():
     """
@@ -36,12 +35,27 @@ def print_startup():
     print("\033[01;31m")
     sys.stdout.write(open("core/logo.txt", "r").read()[:-1])
     print("\033[00m")
-    sys.stdout.write("\033[01;37m\t\t     (%s-%s)\n\033[00m" %(__version__,  __codename__))
-    print("\033[01;37m\t<><><><><><><><><><<><><><><><><><><>\033[00m")
-    print("\t\'%s\'" %say)
-    print("\033[01;37m\t<><><><><><><><><><<><><><><><><><><>\n\033[00m")
+    sys.stdout.write("\033[01;33m\t  :[ %s-%s | Framework: %s]:\n\033[00m" %(__version__,  __codename__, __framework_version__))
 
-def shell_noint(options):
+def profile_getkey(profile_file, key):
+    try:
+        profile = open(profile_file, "r").readlines()
+    except Exception as e:
+        return 0
+    if profile == None:
+        return 0
+    for line in profile:
+        if line.startswith("\n") or line.startswith("#"):
+            pass
+
+        else:
+            (skey,value) = line.split(" = ")
+            if skey == key:
+                return str(value[:-1])
+
+    return 0
+
+def shell_noint(profile_file):
     global url
     global port
     global action_url
@@ -49,12 +63,12 @@ def shell_noint(options):
     global html_file
     global external_js
 
-    url = options.url
-    action_url = options.action_url
-    port = int(options.port)
-    user_agent = options.user_agent
-    html_file = options.html_file
-    external_js = options.external_js
+    url = profile_getkey(profile_file, "url")
+    action_url = profile_getkey(profile_file, "action_url")
+    port = int(profile_getkey(profile_file, "port"))
+    user_agent = profile_getkey(profile_file, "user_agent")
+    html_file = profile_getkey(profile_file, "html_file")
+    external_js = profile_getkey(profile_file, "external_js")
 
     try:
         print_startup()
@@ -87,7 +101,6 @@ def shell():
     global external_js
 
     print_startup()
-    complete(array)
 
     if os.path.exists("history.log"):
         if  os.stat("history.log").st_size == 0:
@@ -99,7 +112,9 @@ def shell():
 
     while True:
         try:
-            an = raw_input(PROMPT_P)
+            # for Re-complete
+            complete(array)
+            an = raw_input("\033[01;37m>>> \033[00m") or "help"
             prompt = an.split()
             if not prompt:
                 print("Error: What? try help.")
@@ -153,9 +168,9 @@ def shell():
                     history.write("external_js = %s\n" %external_js)
             elif prompt[0] == "run" or prompt[0] == "r":
                 if not url:
-                    printt(3, "Error: \'url\' Can't be \'None\', please use \'set\'.")
+                    printt(3, "Error: \'url\' can't be \'None\', please use \'set\'.")
                 elif not action_url:
-                    printt(3, "Error: \'action_url\' Can't be \'None\', please use \'set\'.")
+                    printt(3, "Error: \'action_url\' can't be \'None\', please use \'set\'.")
                 else:
                     # Here we start the server (:
                     s = weeman(url,port)
@@ -163,6 +178,9 @@ def shell():
                     s.serve()
             elif prompt[0] == "banner" or prompt[0] == "b":
                 print_startup()
+            elif prompt[0] == "framework":
+                fw = framework()
+                fw.shell()
             else:
                 print("Error: \'%s\' What? try help." %prompt[0])
 
