@@ -3,7 +3,7 @@
 #
 # This file if part of weeman project
 #
-# See 'LICENSE' file for copying 
+# See 'LICENSE' file for copying
 #
 
 
@@ -37,4 +37,5 @@ port = int(history_getkey("port")) or int(8080)
 action_url = history_getkey("action_url") or None
 user_agent = history_getkey("user_agent") or "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36"
 html_file = None
+external_js = history_getkey("external_js") or None
 quiet_mode = False

@@ -3,7 +3,7 @@
 #
 # This file if part of weeman project
 #
-# See 'LICENSE' file for copying 
+# See 'LICENSE' file for copying
 #
 
 
@@ -16,6 +16,7 @@ help_options = {"url" : "The URL of the webpage, with https:// or http://.",
                 "port" : "The port weeman will listen",
                 "user_agent" : "Weeman User-Agent string.",
                 "html_file" : "allows you to load html file instead of URL.",
+                "external_js" : "allows you to include an external script to be loaded.",
                 "set" : "Set value for option, set <option> <value>.",
                 "run" : "Run the server, alias = \'r\'.",
                 "clear" : "clear the screen.",
@@ -29,7 +30,7 @@ def printt(s, msg):
         sys.exit(1)
     elif s == 2:
         print("\033[01;32m[%s] %s\033[00m" %(time.strftime("%H:%M:%S"),msg))
-    elif s == 3: 
+    elif s == 3:
         print("\033[01;37m[%s] %s\033[00m" %(time.strftime("%H:%M:%S"),msg))
     else:
         print("\033[01;37m[%s] %s\033[00m" %(time.strftime("%H:%M:%S"),msg))
@@ -57,5 +58,3 @@ def print_help_option(option):
 def isroot():
     if os.getuid() !=0:
         printt(1,"Please run weeman as root.")
-
-

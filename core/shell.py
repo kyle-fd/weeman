@@ -3,13 +3,13 @@
 #
 # This file if part of weeman project
 #
-# See 'LICENSE' file for copying 
+# See 'LICENSE' file for copying
 #
 
 import sys
 import os
 from core.complete import complete
-from core.complete import array 
+from core.complete import array
 from core.config import __version__
 from core.config import __framework_version__
 from core.config import __codename__
@@ -21,6 +21,7 @@ from core.config import action_url
 from core.config import port
 from core.config import user_agent
 from core.config import html_file
+from core.config import external_js
 from core.config import quiet_mode
 from core.config import say
 from core.httpd import weeman
@@ -33,7 +34,7 @@ def print_startup():
     print("\033[H\033[J") # Clear the screen
     print("\033[01;31m")
     sys.stdout.write(open("core/logo.txt", "r").read()[:-1])
-    print("\033[00m") 
+    print("\033[00m")
     sys.stdout.write("\033[01;33m\t  :[ %s-%s | Framework: %s]:\n\033[00m" %(__version__,  __codename__, __framework_version__))
 
 def profile_getkey(profile_file, key):
@@ -60,12 +61,14 @@ def shell_noint(profile_file):
     global action_url
     global user_agent
     global html_file
+    global external_js
 
     url = profile_getkey(profile_file, "url")
     action_url = profile_getkey(profile_file, "action_url")
     port = int(profile_getkey(profile_file, "port"))
     user_agent = profile_getkey(profile_file, "user_agent")
     html_file = profile_getkey(profile_file, "html_file")
+    external_js = profile_getkey(profile_file, "external_js")
 
     try:
         print_startup()
@@ -95,6 +98,7 @@ def shell():
     global action_url
     global user_agent
     global html_file
+    global external_js
 
     print_startup()
 
@@ -128,11 +132,12 @@ def shell():
                 l = 20
                 sys.stdout.write("\033[01;37m\t")
                 print("-" * l)
-                print("\turl        : %s " %url)
-                print("\tport       : %d " %(port))
-                print("\taction_url : %s " %(action_url))
-                print("\tuser_agent : %s " %(user_agent))
-                print("\thtml_file  : %s " %(html_file))
+                print("\turl          : %s " %url)
+                print("\tport         : %d " %(port))
+                print("\taction_url   : %s " %(action_url))
+                print("\tuser_agent   : %s " %(user_agent))
+                print("\thtml_file    : %s " %(html_file))
+                print("\texternal_js  : %s " %(external_js))
                 sys.stdout.write("\t")
                 print("-" * l)
                 sys.stdout.write("\033[01;00m")
@@ -158,6 +163,9 @@ def shell():
                     history.write("user_agent = %s\n" %user_agent)
                 if prompt[1] == "html_file":
                     html_file = str(prompt[2])
+                if prompt[1] == "external_js":
+                    external_js = str(prompt[2])
+                    history.write("external_js = %s\n" %external_js)
             elif prompt[0] == "run" or prompt[0] == "r":
                 if not url:
                     printt(3, "Error: \'url\' can't be \'None\', please use \'set\'.")

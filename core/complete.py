@@ -5,16 +5,17 @@
 #
 # This file if part of weeman project
 #
-# See 'LICENSE' file for copying 
+# See 'LICENSE' file for copying
 #
 
 import readline
 
-array = ["set", "show", 
-         "help", "port", 
-         "url", "action_url", 
+array = ["set", "show",
+         "help", "port",
+         "url", "action_url",
          "user_agent", "html_file",
-         "clear", "quit", "framework",
+         "external_js", "clear",
+         "quit", "framework",
          "run", "banner"]
 
 class auto(object):
@@ -35,6 +36,6 @@ class auto(object):
             return None
 
 def complete(array):
-	completer = auto(array)
-	readline.set_completer(completer.complete)
-	readline.parse_and_bind('tab:complete')
+    completer = auto(array)
+    readline.set_completer(completer.complete)
+    readline.parse_and_bind('tab:complete')
