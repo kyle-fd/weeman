@@ -63,19 +63,21 @@ def shell_noint(profile_file):
     global html_file
     global external_js
 
-    url = profile_getkey(profile_file, "url")
-    action_url = profile_getkey(profile_file, "action_url")
-    port = int(profile_getkey(profile_file, "port"))
-    user_agent = profile_getkey(profile_file, "user_agent")
-    html_file = profile_getkey(profile_file, "html_file")
-    external_js = profile_getkey(profile_file, "external_js")
-
     try:
+        url = profile_getkey(profile_file, "url")
+        action_url = profile_getkey(profile_file, "action_url")
+        port = int(profile_getkey(profile_file, "port"))
+        user_agent = profile_getkey(profile_file, "user_agent")
+        html_file = profile_getkey(profile_file, "html_file")
+        external_js = profile_getkey(profile_file, "external_js")
+
         print_startup()
         s = weeman(url,port)
         s.clone()
         s.serve()
 
+    except ValueError:
+        printt(3, "Error: your profile file looks bad.")
     except KeyboardInterrupt:
         s = weeman(url,port)
         s.cleanup()
