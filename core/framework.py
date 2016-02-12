@@ -74,7 +74,7 @@ class framework(object):
                 try:
                     _ = args[1]
                 except IndexError:
-                    print("Usage: run [MODULE] [ARGS] ...")
+                    print("Usage: run [module] [args] ...")
                 else:
                     self.module_execute(args)
             elif args[0] == "back" or args[0] == "quit":
@@ -83,7 +83,7 @@ class framework(object):
                 try:
                     _ = args[1]
                 except IndexError:
-                    print("Usage: info [MODULE]")
+                    print("Usage: info [module]")
                 else:
                     self.module_read(_)
             elif args[0] == "help":

@@ -131,9 +131,8 @@ def shell():
                 else:
                     print_help()
             elif prompt[0] == "show":
-                l = 20
                 sys.stdout.write("\033[01;37m\t")
-                print("-" * l)
+                print("-" * 20)
                 print("\turl          : %s " %url)
                 print("\tport         : %d " %(port))
                 print("\taction_url   : %s " %(action_url))
@@ -141,7 +140,7 @@ def shell():
                 print("\thtml_file    : %s " %(html_file))
                 print("\texternal_js  : %s " %(external_js))
                 sys.stdout.write("\t")
-                print("-" * l)
+                print("-" * 20)
                 sys.stdout.write("\033[01;00m")
             elif prompt[0] == "set":
                 if prompt[1] == "port":
