@@ -1,13 +1,16 @@
 Weeman - http server for phishing
 ==================================
 
-News
-=====
+Press
+------
 
+* 1.7 - is out 25-03-2016
 * Added profiles
 * Weeman framework 0.1 is out !!!
 * Added command line options.
 * Beautifulsoup dependency removed.
+
+**Please let me know if sites not works with weeman.**
 
 About
 =====
@@ -36,11 +39,6 @@ just run the command `framework` to access the framework.
 
 If you want to write a module please read the modules/.
 Soon I will write docs for the API.
-
-Tools
-======
-
-* tools/weeman_ettercap.sh - run ettercap with dns_spoof plugin.
 
 Profiles
 =========
