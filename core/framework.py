@@ -47,6 +47,7 @@ class framework(object):
         self.modules_get_list()
         self.print_startup(len(self.o_modules))
         complete(array+self.o_modules)
+        
         while True:
             args = raw_input("framework >>> ") or "help"
             args = args.split()
