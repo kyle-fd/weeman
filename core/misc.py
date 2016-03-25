@@ -25,17 +25,19 @@ help_options = {"url" : "The URL of the webpage, with https:// or http://.",
 
 
 def printt(s, msg):
+    
     if s == 1:
-        print("\033[01;31m[%s] Error: %s\033[00m" %(time.strftime("%H:%M:%S"),msg))
+        print("\033[01;31mError: %s\033[00m")
         sys.exit(1)
     elif s == 2:
-        print("\033[01;32m[%s] %s\033[00m" %(time.strftime("%H:%M:%S"),msg))
+        print("[%s]\033[01;32m %s\033[00m" %(time.strftime("%H:%M:%S"),msg))
     elif s == 3:
         print("\033[01;37m[%s] %s\033[00m" %(time.strftime("%H:%M:%S"),msg))
     else:
         print("\033[01;37m[%s] %s\033[00m" %(time.strftime("%H:%M:%S"),msg))
 
 def print_help():
+
     print("\t\033[01;32m")
     print("\tshow        : show default settings.")
     print("\tset         : set value for option (set <option> <value>).")
@@ -46,8 +48,8 @@ def print_help():
     print("\tquit        : quit.\033[00m")
 
 def print_help_option(option):
-    found = 0
 
+    found = 0
     for opt in help_options.items():
         if opt[0] == option:
             found = 1
@@ -56,5 +58,6 @@ def print_help_option(option):
         printt(3, "Error: option \'%s\' not found." %option)
 
 def isroot():
+
     if os.getuid() !=0:
         printt(1,"Please run weeman as root.")
