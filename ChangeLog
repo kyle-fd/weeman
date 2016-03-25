@@ -35,6 +35,11 @@ Version 1.6 (Black-eagle) 22-11-2015:
 	Code cleanup.
 	Windows not supported!
 
-Added profiles
-Added module whois_ip.py
-Added module extract_links.py
+Version 1.7 (Scratch) 25-03-2016:
+	Added profiles
+	Added module whois_ip.py
+	Added module extract_links.py
+	Added new tool tools/switch_ip_forward.sh
+	Tool Removed tools/weeman_ettercap.sh
+	Core updated.
+	Bug fixes.
