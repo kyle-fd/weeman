@@ -71,7 +71,6 @@ class handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                 post_request.append("%s %s" %(key,value))
                 printt(2, "%s => %s" %(key,value))
                 logger.write("%s => %s\n" %(key,value))
-		print tag
             logger.close()
             
             from core.shell import action_url
