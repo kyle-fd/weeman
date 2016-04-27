@@ -1,16 +1,14 @@
 Weeman - http server for phishing
 ==================================
 
-Press
+Changes to Original
 ------
 
-* 1.7 - is out 25-03-2016
-* Added profiles
-* Weeman framework 0.1 is out !!!
-* Added command line options.
-* Beautifulsoup dependency removed.
-
-**Please let me know if sites not works with weeman.**
+* User Agent header parsing
+* Automatic searchsploit against browser and OS
+* Flash detection for IE
+* JS folder contains client side extension
+* Example redirect with image for internal pen testing
 
 About
 =====
